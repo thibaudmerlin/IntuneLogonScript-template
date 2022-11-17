@@ -29,7 +29,7 @@
     - client_id = yourclientID
     - client_secret = yourclientSecret
     - tenant_id = yourtenantID
-
+- *Optionnal : you can enforce certificate auth in the azure function in strict env.
 ## 3. Clone the github repo and connect it to UAT slot
 - Clone this repository
 - *Optionnal : Connect it to the UAT slot in deployment center
