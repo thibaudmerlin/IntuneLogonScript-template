@@ -1,0 +1,157 @@
+{
+	"definitions": {},
+	"$schema": "http://json-schema.org/draft-07/schema#", 
+	"$id": "https://example.com/object1668088996.json", 
+	"title": "Root", 
+	"type": "object",
+	"required": [
+		"drives",
+		"printers"
+	],
+	"properties": {
+		"drives": {
+			"$id": "#root/drives", 
+			"title": "Drives", 
+			"type": "array",
+			"default": [],
+			"items":{
+				"$id": "#root/drives/items", 
+				"title": "Items", 
+				"type": "object",
+				"required": [
+					"group",
+					"drives"
+				],
+				"properties": {
+					"group": {
+						"$id": "#root/drives/items/group", 
+						"title": "Group", 
+						"type": "array",
+						"default": [],
+						"items":{
+							"$id": "#root/drives/items/group/items", 
+							"title": "Items", 
+							"type": "string",
+							"default": "",
+							"examples": [
+								"ALLUSERS"
+							],
+							"pattern": "^.*$"
+						}
+					},
+					"drives": {
+						"$id": "#root/drives/items/drives", 
+						"title": "Drives", 
+						"type": "array",
+						"default": [],
+						"items":{
+							"$id": "#root/drives/items/drives/items", 
+							"title": "Items", 
+							"type": "object",
+							"required": [
+								"driveLetter",
+								"uncPath"
+							],
+							"properties": {
+								"driveLetter": {
+									"$id": "#root/drives/items/drives/items/driveLetter", 
+									"title": "Driveletter", 
+									"type": "string",
+									"default": "",
+									"examples": [
+										"G"
+									],
+									"pattern": "^.*$"
+								},
+								"uncPath": {
+									"$id": "#root/drives/items/drives/items/uncPath", 
+									"title": "Uncpath", 
+									"type": "string",
+									"default": "",
+									"examples": [
+										"\\\\FILESERVER.CORP\\GroupShare"
+									],
+									"pattern": "^.*$"
+								}
+							}
+						}
+
+					}
+				}
+			}
+
+		},
+		"printers": {
+			"$id": "#root/printers", 
+			"title": "Printers", 
+			"type": "array",
+			"default": [],
+			"items":{
+				"$id": "#root/printers/items", 
+				"title": "Items", 
+				"type": "object",
+				"required": [
+					"group",
+					"printers"
+				],
+				"properties": {
+					"group": {
+						"$id": "#root/printers/items/group", 
+						"title": "Group", 
+						"type": "array",
+						"default": [],
+						"items":{
+							"$id": "#root/printers/items/group/items", 
+							"title": "Items", 
+							"type": "string",
+							"default": "",
+							"examples": [
+								"ALLUSERS"
+							],
+							"pattern": "^.*$"
+						}
+					},
+					"printers": {
+						"$id": "#root/printers/items/printers", 
+						"title": "Printers", 
+						"type": "array",
+						"default": [],
+						"items":{
+							"$id": "#root/printers/items/printers/items", 
+							"title": "Items", 
+							"type": "object",
+							"required": [
+								"Printer",
+								"Server"
+							],
+							"properties": {
+								"printerName": {
+									"$id": "#root/printers/items/printers/items/Printer", 
+									"title": "Printer", 
+									"type": "string",
+									"default": "",
+									"examples": [
+										"Minolta"
+									],
+									"pattern": "^.*$"
+								},
+								"Server": {
+									"$id": "#root/printers/items/printers/items/Server", 
+									"title": "Server", 
+									"type": "string",
+									"default": "",
+									"examples": [
+										"PRINT1.SERVER.CORP"
+									],
+									"pattern": "^.*$"
+								}
+							}
+						}
+
+					}
+				}
+			}
+
+		}
+	}
+}

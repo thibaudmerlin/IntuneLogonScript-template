@@ -1,0 +1,74 @@
+{
+  "drives": [
+    {
+      "group": [
+        "ALLUSERS"
+      ],
+      "drives": [
+        {
+          "driveLetter": "G",
+          "uncPath": "\\\\FILESERVER.CORP\\GroupShare"
+        }
+      ]
+    },
+    {
+      "group": [
+        "ExecutiveSec"
+      ],
+      "drives": [
+        {
+          "driveLetter": "H",
+          "uncPath": "\\\\FILESERVER.CORP\\BUSINESSSECRETS"
+        }
+      ]
+    },
+    {
+      "group": [
+        "InternSec",
+        "ExecutiveSec"
+      ],
+      "drives": [
+        {
+          "driveLetter": "I",
+          "uncPath": "\\\\FILESERVER.CORP\\INTERNTHINGS"
+        }
+      ]
+    }
+  ],
+  "printers": [
+    {
+      "group": [
+        "ALLUSERS"
+      ],
+      "printers": [
+        {
+          "Printer": "Minolta",
+          "Server": "PRINT1.SERVER.CORP"
+        }
+      ]
+    },
+    {
+      "group": [
+        "ExecutiveSec"
+      ],
+      "printers": [
+        {
+          "Printer": "Canon",
+          "Server": "PRINT1.SERVER.CORP"
+        }
+      ]
+    },
+    {
+      "group": [
+        "InternSec",
+        "ExecutiveSec"
+      ],
+      "printers": [
+        {
+          "Printer": "Xerox",
+          "Server": "PRINT2.SERVER.CORP"
+        }
+      ]
+    }
+  ]
+}
