@@ -30,7 +30,7 @@
     - client_secret = yourclientSecret
     - tenant_id = yourtenantID
 - *Optional : you can enforce certificate auth in the azure function in strict env.
-## 3. Clone the github repo and connect it to UAT slot
+## 3. Clone the github repo
 - Clone this repository
 - *Optional : Create the env. variable for pipeline
 
