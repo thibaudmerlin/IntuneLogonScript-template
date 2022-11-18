@@ -1,4 +1,4 @@
-name: Drivemap Schema Validation
+name: Approved Test Validation
 
 on:
   push:
@@ -11,9 +11,9 @@ env:
   SCHEMA_PATH: .\drivemaps_schema.json
   TESTS_PATH: .\tests
   FA_ENDPOINT_UAT: ${{ secrets.FA_ENDPOINT_UAT }}
-  SAMPLE_USER: someone@some.one
-  FA_UAT_NAME: aad-sec-grp-qry/uat
-  FA_PROD_NAME: aad-sec-grp-qry
+  SAMPLE_USER: ${{ secrets.SAMPLE_USER }}
+  FA_UAT_NAME: aadsecgrpqry/uat
+  FA_PROD_NAME: aadsecgrpqry
 
 jobs:
   publish-uat-and-prod:

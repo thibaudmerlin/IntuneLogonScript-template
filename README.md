@@ -19,7 +19,7 @@
 - Create a new App Registration in AzureAD, name Company-LogonScript (Single Tenant, no redirect uri)
 - Add API permissions : Directory.Read.All (application), Group.Read.All (application)
 - Create a secret and save the value
-- Save the Client(app) ID2, save the Tenant ID
+- Save the Client(app) ID, save the Tenant ID
 
 ## 2. Create an Azure Function
 ![image](https://user-images.githubusercontent.com/107478270/202448508-069eb0e6-a4ec-4e92-8bd7-a393fc10611c.png)
@@ -32,7 +32,7 @@
 - *Optional : you can enforce certificate auth in the azure function in strict env.
 ## 3. Clone the github repo and connect it to UAT slot
 - Clone this repository
-- *Optional : Connect it to the UAT slot in deployment center
+- *Optional : Create the env. variable for pipeline
 
 ## 4. Customize the files for the customer and deploy the function
 - Connect VSCode to the GitHub repo
