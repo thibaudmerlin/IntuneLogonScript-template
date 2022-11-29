@@ -1,7 +1,7 @@
 {
 	"definitions": {},
 	"$schema": "http://json-schema.org/draft-07/schema#", 
-	"$id": "https://example.com/object1668088996.json", 
+	"$id": "https://example.com/object1669711386.json", 
 	"title": "Root", 
 	"type": "object",
 	"required": [
@@ -122,10 +122,11 @@
 							"type": "object",
 							"required": [
 								"Printer",
-								"Server"
+								"Server",
+								"Default"
 							],
 							"properties": {
-								"printerName": {
+								"Printer": {
 									"$id": "#root/printers/items/printers/items/Printer", 
 									"title": "Printer", 
 									"type": "string",
@@ -142,6 +143,16 @@
 									"default": "",
 									"examples": [
 										"PRINT1.SERVER.CORP"
+									],
+									"pattern": "^.*$"
+								},
+								"Default": {
+									"$id": "#root/printers/items/printers/items/Default", 
+									"title": "Default", 
+									"type": "string",
+									"default": "",
+									"examples": [
+										"true"
 									],
 									"pattern": "^.*$"
 								}

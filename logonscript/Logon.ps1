@@ -96,7 +96,9 @@ Function Set-LocalPrinters {
     param (
         [string]$server,
 
-        [string]$printerName
+        [string]$printerName,
+
+        [string]$Default
     )
     $printerPath = $null
     $PrinterPath = "\\$($server)\$($printerName)"
@@ -107,8 +109,15 @@ Function Set-LocalPrinters {
             Write-Host "Printer $printerPath already installed" -ForegroundColor Green
         }
         else {
-            Write-Host "Installing $printerPath" -ForegroundColor Green
-            & cscript /noLogo C:\windows\System32\Printing_Admin_Scripts\en-US\prnmngr.vbs -ac -p $printerPath
+            if ($Default -eq "true") {
+                Write-Host "Installing $printerPath" -ForegroundColor Green
+                & cscript /noLogo C:\windows\System32\Printing_Admin_Scripts\en-US\prnmngr.vbs -ac -p $printerPath -T
+            }
+            else {
+                Write-Host "Installing $printerPath" -ForegroundColor Green
+                & cscript /noLogo C:\windows\System32\Printing_Admin_Scripts\en-US\prnmngr.vbs -ac -p $printerPath
+            }
+
             if (Get-Printer -Name "$printerPath" -ErrorAction SilentlyContinue) {
                 Write-Host "$printerPath successfully installed.."
             }
@@ -186,7 +195,7 @@ try {
         foreach ($p in $grpMembership.printers) {
             if ($null -ne $d) {
                 Write-Host "Mapping `"$($d.Server)`"/$($p.Printer):"
-                Set-LocalPrinters -server $p.Server -printerName $p.Printer
+                Set-LocalPrinters -server $p.Server -printerName $p.Printer -Default $p.Default
             }
         }
     }

@@ -43,7 +43,8 @@
       "printers": [
         {
           "Printer": "Minolta",
-          "Server": "PRINT1.SERVER.CORP"
+          "Server": "PRINT1.SERVER.CORP",
+          "Default": "true"
         }
       ]
     },
@@ -54,7 +55,8 @@
       "printers": [
         {
           "Printer": "Canon",
-          "Server": "PRINT1.SERVER.CORP"
+          "Server": "PRINT1.SERVER.CORP",
+          "Default": "false"
         }
       ]
     },
@@ -66,7 +68,8 @@
       "printers": [
         {
           "Printer": "Xerox",
-          "Server": "PRINT2.SERVER.CORP"
+          "Server": "PRINT2.SERVER.CORP",
+          "Default": "false"
         }
       ]
     }
