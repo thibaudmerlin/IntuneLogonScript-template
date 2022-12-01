@@ -47,8 +47,8 @@
 - Donwload [win32 prep tool](https://github.com/Microsoft/Microsoft-Win32-Content-Prep-Tool)
 - Put all the files into the logonscript folder in the intunewin package
 - Deploy the App in intune and use the commands :
-    - Install Command : Powershell.exe -NoProfile -ExecutionPolicy ByPass -File .\Install.ps1
-    - Uninstall Command : Powershell.exe -NoProfile -ExecutionPolicy ByPass -File .\UnInstall.ps1
+    - Install Command : Powershell.exe -ExecutionPolicy ByPass -File .\Install.ps1
+    - Uninstall Command : Powershell.exe -ExecutionPolicy ByPass -File .\UnInstall.ps1
 # Folder overview
 
 - function-app contains the function app code that will be deployed to Azure
