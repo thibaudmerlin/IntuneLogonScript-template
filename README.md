@@ -46,7 +46,6 @@
 ## 5. Create the win32 app and upload it to Intune
 - Donwload [win32 prep tool](https://github.com/Microsoft/Microsoft-Win32-Content-Prep-Tool)
 - Put all the files into the logonscript folder in the intunewin package
-- You can use the LogonScript.exe in the intunewin package (just write-host "Hey" convert to exe)
 - Deploy the App in intune and use the commands :
     - Install Command : Powershell.exe -NoProfile -ExecutionPolicy ByPass -File .\Install.ps1
     - Uninstall Command : Powershell.exe -NoProfile -ExecutionPolicy ByPass -File .\UnInstall.ps1
