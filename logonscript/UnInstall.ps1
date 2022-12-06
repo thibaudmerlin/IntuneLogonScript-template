@@ -1,6 +1,6 @@
 #region Config
 $client = "Company"
-$scriptsPath = "$env:ProgramData\$client\Scripts\LogonScript"
+$scriptsPath = "$env:ProgramData\$client\Scripts\LogonScript\"
 $logPath = "$env:ProgramData\$client\Logs"
 $logFile = "$logPath\LogonScript-UnInstall.log"
 $buildId = "9d984414-ae86-43a3-8a84-8e497bc7eef4"
@@ -13,15 +13,17 @@ Start-Transcript -Path "$logFile" -Force
 #endregion
 #region Scheduled Task
 try {
-    Write-Host "Deletting scheduled task"
+    Write-Verbose "Deletting scheduled task"
     if ((Get-ScheduledTask -TaskName "$client`_Logonscript" -TaskPath "\" -ErrorAction SilentlyContinue)) {
         Unregister-ScheduledTask -TaskName "$client`_Logonscript" -Confirm:$false
-        if (Test-Path "$scriptsPath\$logonScript") {
-            Remove-Item -Path "$scriptsPath\$logonScript" -Force -Recurse
+        Write-Verbose "Scheduled task deleted successfully"
+        if (Test-Path "$scriptsPath") {
+            Remove-Item -Path "$scriptsPath" -Force -Recurse
+            Write-Verbose "Scripts deleted successfully"
         }
     }
     else {
-        Write-Host "Scheduled task already deleted."
+        Write-Verbose "Scheduled task already deleted."
     }
 }
 catch {

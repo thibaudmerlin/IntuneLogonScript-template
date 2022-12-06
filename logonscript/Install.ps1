@@ -3,7 +3,7 @@ $client = "Company"
 $scriptsPath = "$env:ProgramData\$client\Scripts\LogonScript"
 $logPath = "$env:ProgramData\$client\Logs"
 $logFile = "$logPath\LogonScript-RunOnceConfig.log"
-$psRun = "psRun.vbs"
+#$psRun = "psRun.vbs"
 $logonScript = "Logon.ps1"
 $buildId = "9d984414-ae86-43a3-8a84-8e497bc7eef4"
 #endregion
@@ -24,7 +24,7 @@ Start-Transcript -Path "$logFile" -Force
 Write-Host "Creating logon script and storing: $scriptsPath\$logonScript" -ForegroundColor Yellow
 Copy-Item "$PSScriptRoot\$logonScript" -Destination "$scriptsPath\$logonScript" -Force
 #endregion
-#region Bootstrap Contents
+<# #region Bootstrap Contents
 $bootstrapContents = @'
 Set objShell = CreateObject("Wscript.Shell")
 if Wscript.arguments.count > 0 then
@@ -38,7 +38,7 @@ objShell.Run(PSRun),0
 '@ -f $logonScript
 Write-Host "Creating logon script bootstrap and storing: $scriptsPath\$psRun" -ForegroundColor Yellow
 Out-File -FilePath "$scriptsPath\$psRun" -Encoding unicode -Force -InputObject $bootstrapContents -NoNewline
-#endregion
+#endregion #>
 #region Scheduled Task
 try {
     Write-Host "Setting up scheduled task"
@@ -69,8 +69,8 @@ try {
         $trigger.Enabled = $true
 
         $action = $Task.Actions.Create(0)
-        $action.Path = "wscript.exe"
-        $action.Arguments = "`"$scriptsPath\$psRun`" `"$scriptsPath\$logonScript`""
+        $action.Path = "powershell.exe"
+        $action.Arguments = " -ExecutionPolicy`"Bypass`" -File `"$scriptsPath\$logonScript`""
 
         $taskFolder = $ShedService.GetFolder("\")
         $taskFolder.RegisterTaskDefinition("$client`_Logonscript", $Task , 6, 'Users', $null, 4) | Out-Null
