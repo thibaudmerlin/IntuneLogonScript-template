@@ -70,7 +70,7 @@ try {
 
         $action = $Task.Actions.Create(0)
         $action.Path = "powershell.exe"
-        $action.Arguments = " -ExecutionPolicy `"Bypass`" -File `"$scriptsPath\$logonScript`""
+        $action.Arguments = " -ExecutionPolicy `"Bypass`" -NonInteractive -WindowStyle hidden -File `"$scriptsPath\$logonScript`""
 
         $taskFolder = $ShedService.GetFolder("\")
         $taskFolder.RegisterTaskDefinition("$client`_Logonscript", $Task , 6, 'Users', $null, 4) | Out-Null
