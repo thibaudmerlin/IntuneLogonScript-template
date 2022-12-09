@@ -42,7 +42,10 @@ Out-File -FilePath "$scriptsPath\$psRun" -Encoding unicode -Force -InputObject $
 #region Scheduled Task
 try {
     Write-Host "Setting up scheduled task"
-    if (!(Get-ScheduledTask -TaskName "$client`_Logonscript" -TaskPath "\" -ErrorAction SilentlyContinue)) {
+    if ((Get-ScheduledTask -TaskName "$client`_Logonscript" -TaskPath "\" -ErrorAction SilentlyContinue)) {
+        Get-ScheduledTask -TaskName "$client`_Logonscript" -TaskPath "\" | Unregister-ScheduledTask -Confirm:$false
+        Write-Host "Scheduled Task already configured, deleting..." -ForegroundColor Yellow
+    }
         $ShedService = New-Object -comobject 'Schedule.Service'
         $ShedService.Connect()
 
@@ -75,10 +78,6 @@ try {
         $taskFolder = $ShedService.GetFolder("\")
         $taskFolder.RegisterTaskDefinition("$client`_Logonscript", $Task , 6, 'Users', $null, 4) | Out-Null
         Write-Host $script:tick -ForegroundColor Green
-    }
-    else {
-        Write-Host "Scheduled task already configured."
-    }
 }
 catch {
     $errMsg = $_.Exception.Message
