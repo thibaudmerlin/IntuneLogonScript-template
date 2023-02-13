@@ -111,7 +111,9 @@ Function Set-LocalPrinters {
         else {
             if ($Default -eq "true") {
                 Write-Host "Installing $printerPath" -ForegroundColor Green
-                & cscript /noLogo C:\windows\System32\Printing_Admin_Scripts\en-US\prnmngr.vbs -ac -p $printerPath -T
+                & cscript /noLogo C:\windows\System32\Printing_Admin_Scripts\en-US\prnmngr.vbs -ac -p $printerPath
+                (New-Object -ComObject Wscript.Network).SetDefaultPrinter($($printerName))
+
             }
             else {
                 Write-Host "Installing $printerPath" -ForegroundColor Green
