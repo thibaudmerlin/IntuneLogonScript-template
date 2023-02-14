@@ -112,8 +112,9 @@ Function Set-LocalPrinters {
             if ($Default -eq "true") {
                 Write-Host "Installing $printerPath" -ForegroundColor Green
                 & cscript /noLogo C:\windows\System32\Printing_Admin_Scripts\en-US\prnmngr.vbs -ac -p $printerPath
-                (New-Object -ComObject Wscript.Network).SetDefaultPrinter($($printerName))
-
+                $ExistingPrinter = Get-Printer -Name $printerPath -ErrorAction SilentlyContinue
+                (New-Object -ComObject Wscript.Network).SetDefaultPrinter($($ExistingPrinter.Name))
+                Start-Sleep -Milliseconds 100
             }
             else {
                 Write-Host "Installing $printerPath" -ForegroundColor Green
@@ -192,6 +193,14 @@ try {
     #endregion
     #region Map printers
     if ($grpMembership.printers) {
+         # Disabling Windows default printer management
+         Write-Host "`nTrying disabling Windows default printer management"
+         $RegistryPath = "HKCU:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows"
+         $DefaultPrinterMgmtValue = Get-ItemPropertyValue "HKCU:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows" -Name "LegacyDefaultPrinterMode"
+         If($DefaultPrinterMgmtValue -eq 0)
+         {
+             Set-ItemProperty -Path $RegistryPath -Name "LegacyDefaultPrinterMode" -Value 1
+         }
         Write-Host "`nMapping network printers.."
         $grpMembership.printers | Format-Table
         foreach ($p in $grpMembership.printers) {
