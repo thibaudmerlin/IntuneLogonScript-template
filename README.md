@@ -43,7 +43,14 @@
 - Gather the function URI and save it
 - Change variable in Logon.ps1, Install.ps1 and UnInstall.ps1 ($client, $fileServer, $funcUri)
 
-## 5. Create the win32 app and upload it to Intune
+## 5. Deployment methods
+
+### 5.1. Deploy it by Powershell Script
+- Change variable in the install.ps1 script (company name, file server, func uri)
+- Create a new powershell script, then upload the install.ps1
+- Target Device or Users
+- That's it :)
+### 5.2. Create the win32 app and upload it to Intune
 - Donwload [win32 prep tool](https://github.com/Microsoft/Microsoft-Win32-Content-Prep-Tool)
 - Put all the files into the logonscript folder in the intunewin package
 - Deploy the App in intune and use the commands :
